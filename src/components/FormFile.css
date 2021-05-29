@@ -1,0 +1,18 @@
+.form-file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.upload-file {
+
+  /* border: 2px solid red; */
+  width: 500px;
+}
+
+.upload__tip {
+  font-size: 1rem;
+}
+
+.text_upload {
+  font-size: 1.2rem!important; 
+}
