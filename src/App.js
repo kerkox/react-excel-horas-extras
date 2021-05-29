@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { FormFile } from "./components/FormFile";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Extractor de horas extras</h1>
       </header>
+      <div className="content">
+        <p>Puedes adjuntar varios archivos para extraer las horas extras</p>
+
+        <div className="card">
+          <h2>Extraer &rarr;</h2>
+          <p>
+            Cuando se termine de procesar los archivos se te retorna un archivo
+            comprimido en ZIP con los planos correspondientes
+          </p>
+          <FormFile></FormFile>
+        </div>
+      </div>
+      <footer className="footer">
+        <p>Powered by Paul Cortes</p>
+      </footer>
     </div>
   );
 }
