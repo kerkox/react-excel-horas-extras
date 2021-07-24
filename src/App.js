@@ -10,7 +10,7 @@ function App() {
       <div className="content">
         <p>Puedes adjuntar varios archivos para extraer las horas extras</p>
 
-        <div className="card">
+        <div className="card-custom">
           <h2>Extraer &rarr;</h2>
           <p>
             Cuando se termine de procesar los archivos se te retorna un archivo
