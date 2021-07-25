@@ -1,7 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { config } from "../config/config";
+import iconLoading from "../assets/img/sync-alt-solid.svg";
 import "./FormFile.css";
+
+
 
 export const FormFile = () => {
   const [archivos, setArchivos] = useState(null);
@@ -18,11 +21,6 @@ export const FormFile = () => {
   const disabledButton = () => {
     return  loading || !archivos || archivos?.length <= 0;
   }
-
-  useEffect(() => {
-    disabledButton();
-    
-  }, [disabledButton])
 
   const handleSubmit = async () => {
     // console.log("se llamo la funcion HandleSubmit");
@@ -57,8 +55,8 @@ export const FormFile = () => {
         onChange={subirArchivos}
       />
       {loading && (
-        <div>
-          <i class="fas fa-sync fa-spin"></i>
+        <div className="icon-loading">
+          <img src={iconLoading} alt="icon loading" />
         </div>
       )}
       <button
