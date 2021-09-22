@@ -31,7 +31,10 @@ export const FormFile = () => {
     setLoading(true);
     await axios
       .post(`${API}/upload-excel`, form, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: { 
+          "Content-Type": "multipart/form-data",
+          "Access-Control-Allow-Origin":"*" 
+        },
       })
       .then((response) => {
         console.log(response.data);
