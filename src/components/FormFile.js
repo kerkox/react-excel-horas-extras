@@ -9,6 +9,7 @@ import "./FormFile.css";
 export const FormFile = () => {
   const [archivos, setArchivos] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [fileErrors, setFileErrors] = useState([]);
 
   const API = config.prod.API_URL;
   // const fileList = []
@@ -29,6 +30,7 @@ export const FormFile = () => {
       form.append(`files_${index}`, archivos[index]);
     }
     setLoading(true);
+    setFileErrors([]);
     await axios
       .post(`${API}/upload-excel`, form, {
         headers: { 
@@ -38,9 +40,10 @@ export const FormFile = () => {
       })
       .then((response) => {
         console.log(response.data);
-        let code = response.data.data.code;
+        let {code, file_errors } = response.data;
         window.open(`${API}/download-files/${code}`);
         setLoading(false);
+        setFileErrors(file_errors);
       })
       .catch((error) => {
         console.log(error);
@@ -71,6 +74,20 @@ export const FormFile = () => {
       >
         Subir
       </button>
+      {fileErrors.length > 0 ? (
+        <div className="mt-5 alert alert-danger" role="alert">
+          <h4>
+            Estos archivos contienen errores o estan en un formato invalido
+          </h4>
+          <ul className="left-side">
+            {fileErrors.map((file, index) => (
+              <li key={index}>
+                <h5>{file}</h5>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
     </div>
   );
 };

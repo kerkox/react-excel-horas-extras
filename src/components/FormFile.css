@@ -28,6 +28,14 @@
 
 }
 
+.left-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;  
+  border: solid red 1px;
+}
+
 
 @keyframes spin {
     from {
